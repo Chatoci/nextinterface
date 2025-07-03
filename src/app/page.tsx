@@ -677,7 +677,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="font-semibold text-foreground text-lg mb-1">{t.contact.email}</p>
-                    <p className="text-foreground/70">hello@nextinterface.com</p>
+                    <p className="text-foreground/70">nextinterfacere@gmail.com</p>
                   </div>
                 </div>
                 
@@ -687,7 +687,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="font-semibold text-foreground text-lg mb-1">{t.contact.phone}</p>
-                    <p className="text-foreground/70">+1 (555) 123-4567</p>
+                    <p className="text-foreground/70">+856 20 5999 1574</p>
                   </div>
                 </div>
                 
@@ -697,7 +697,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="font-semibold text-foreground text-lg mb-1">{t.contact.location}</p>
-                    <p className="text-foreground/70">San Francisco, CA</p>
+                    <p className="text-foreground/70">Laos, Vientiane</p>
                   </div>
                 </div>
               </div>

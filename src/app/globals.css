@@ -1,0 +1,621 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Import Noto Sans Lao Looped font */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao+Looped:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Font face declarations for better control */
+@font-face {
+  font-family: 'Noto Sans Lao Looped';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/notosanslaolooped/v1/ieVc2YdFI3GCY6SyQy1KfStzYKZgzN1z0w.woff2') format('woff2');
+  unicode-range: U+0E81-0EDF, U+25CC;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-roboto);
+  --font-mono: var(--font-roboto);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  --font-roboto: 'Roboto', sans-serif;
+  --font-noto-sans-lao-looped: 'Noto Sans Lao Looped', sans-serif;
+  --font-noto-sans-thai: 'Noto Sans Thai', sans-serif;
+  --font-noto-sans-chinese: 'Noto Sans SC', sans-serif;
+  --background: #ffffff;
+  --foreground: #000000;
+  --card: #f8f9fa;
+  --card-foreground: #000000;
+  --popover: #f8f9fa;
+  --popover-foreground: #000000;
+  --primary: #dc2626;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f3f4;
+  --secondary-foreground: #000000;
+  --muted: #f1f3f4;
+  --muted-foreground: #6b7280;
+  --accent: #dc2626;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: #e5e7eb;
+  --input: #f1f3f4;
+  --ring: #dc2626;
+  --chart-1: #dc2626;
+  --chart-2: #b91c1c;
+  --chart-3: #991b1b;
+  --chart-4: #7f1d1d;
+  --chart-5: #450a0a;
+  --sidebar: #f8f9fa;
+  --sidebar-foreground: #000000;
+  --sidebar-primary: #dc2626;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f1f3f4;
+  --sidebar-accent-foreground: #000000;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #dc2626;
+  --scrollbar-track: #f1f3f4;
+  --scrollbar-thumb: #dc2626;
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #111111;
+  --card-foreground: #ffffff;
+  --popover: #111111;
+  --popover-foreground: #ffffff;
+  --primary: #dc2626;
+  --primary-foreground: #ffffff;
+  --secondary: #1f1f1f;
+  --secondary-foreground: #ffffff;
+  --muted: #1f1f1f;
+  --muted-foreground: #a3a3a3;
+  --accent: #dc2626;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: #333333;
+  --input: #1f1f1f;
+  --ring: #dc2626;
+  --chart-1: #dc2626;
+  --chart-2: #b91c1c;
+  --chart-3: #991b1b;
+  --chart-4: #7f1d1d;
+  --chart-5: #450a0a;
+  --sidebar: #111111;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #dc2626;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1f1f1f;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #333333;
+  --sidebar-ring: #dc2626;
+  --scrollbar-track: #111111;
+  --scrollbar-thumb: #dc2626;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-roboto), 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  html {
+    font-family: var(--font-roboto), 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  /* Language-specific font classes */
+  .font-lao {
+    font-family: 'Noto Sans Lao Looped', sans-serif !important;
+  }
+  
+  .font-lao * {
+    font-family: 'Noto Sans Lao Looped', sans-serif !important;
+  }
+  
+  .font-lao h1,
+  .font-lao h2,
+  .font-lao h3,
+  .font-lao h4,
+  .font-lao h5,
+  .font-lao h6,
+  .font-lao p,
+  .font-lao span,
+  .font-lao div,
+  .font-lao button,
+  .font-lao a,
+  .font-lao input,
+  .font-lao textarea,
+  .font-lao label {
+    font-family: 'Noto Sans Lao Looped', sans-serif !important;
+  }
+  
+  /* Force Lao font on all elements when body has font-lao class */
+  body.font-lao,
+  body.font-lao *,
+  body.font-lao h1,
+  body.font-lao h2,
+  body.font-lao h3,
+  body.font-lao h4,
+  body.font-lao h5,
+  body.font-lao h6,
+  body.font-lao p,
+  body.font-lao span,
+  body.font-lao div,
+  body.font-lao button,
+  body.font-lao a,
+  body.font-lao input,
+  body.font-lao textarea,
+  body.font-lao label {
+    font-family: 'Noto Sans Lao Looped', sans-serif !important;
+  }
+  
+  .font-thai {
+    font-family: 'Noto Sans Thai', sans-serif !important;
+  }
+  
+  .font-thai * {
+    font-family: 'Noto Sans Thai', sans-serif !important;
+  }
+  
+  .font-thai h1,
+  .font-thai h2,
+  .font-thai h3,
+  .font-thai h4,
+  .font-thai h5,
+  .font-thai h6,
+  .font-thai p,
+  .font-thai span,
+  .font-thai div,
+  .font-thai button,
+  .font-thai a,
+  .font-thai input,
+  .font-thai textarea,
+  .font-thai label {
+    font-family: 'Noto Sans Thai', sans-serif !important;
+  }
+  
+  body.font-thai,
+  body.font-thai *,
+  body.font-thai h1,
+  body.font-thai h2,
+  body.font-thai h3,
+  body.font-thai h4,
+  body.font-thai h5,
+  body.font-thai h6,
+  body.font-thai p,
+  body.font-thai span,
+  body.font-thai div,
+  body.font-thai button,
+  body.font-thai a,
+  body.font-thai input,
+  body.font-thai textarea,
+  body.font-thai label {
+    font-family: 'Noto Sans Thai', sans-serif !important;
+  }
+  
+  .font-english {
+    font-family: var(--font-roboto), 'Roboto', sans-serif;
+  }
+  
+  .font-chinese {
+    font-family: 'Noto Sans SC', sans-serif !important;
+  }
+  
+  .font-chinese * {
+    font-family: 'Noto Sans SC', sans-serif !important;
+  }
+  
+  .font-chinese h1,
+  .font-chinese h2,
+  .font-chinese h3,
+  .font-chinese h4,
+  .font-chinese h5,
+  .font-chinese h6,
+  .font-chinese p,
+  .font-chinese span,
+  .font-chinese div,
+  .font-chinese button,
+  .font-chinese a,
+  .font-chinese input,
+  .font-chinese textarea,
+  .font-chinese label {
+    font-family: 'Noto Sans SC', sans-serif !important;
+  }
+  
+  body.font-chinese,
+  body.font-chinese *,
+  body.font-chinese h1,
+  body.font-chinese h2,
+  body.font-chinese h3,
+  body.font-chinese h4,
+  body.font-chinese h5,
+  body.font-chinese h6,
+  body.font-chinese p,
+  body.font-chinese span,
+  body.font-chinese div,
+  body.font-chinese button,
+  body.font-chinese a,
+  body.font-chinese input,
+  body.font-chinese textarea,
+  body.font-chinese label {
+    font-family: 'Noto Sans SC', sans-serif !important;
+  }
+}
+
+/* Custom Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 30px rgba(220, 38, 38, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(220, 38, 38, 0.6);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(220, 38, 38, 0.8);
+  }
+}
+
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.6s ease-out;
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.8s ease-out;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-rotate-slow {
+  animation: rotate-slow 20s linear infinite;
+}
+
+/* Enhanced hover effects */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced scrollbar */
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--chart-2);
+}
+
+/* Enhanced focus states */
+.focus-ring {
+  transition: all 0.2s ease;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--chart-2), var(--primary));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient 3s ease infinite;
+}
+
+/* Enhanced card hover effects */
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(220, 38, 38, 0.15);
+}
+
+/* Enhanced button effects */
+.btn-enhanced {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-enhanced:hover::before {
+  left: 100%;
+}
+
+/* Enhanced background patterns */
+.bg-pattern {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(220, 38, 38, 0.1) 0%, transparent 50%);
+}
+
+/* Enhanced text shadows */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dark .text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.text-shadow-lg {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dark .text-shadow-lg {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Enhanced borders */
+.border-gradient {
+  border: 2px solid;
+  border-image: linear-gradient(45deg, var(--primary), var(--chart-2)) 1;
+}
+
+/* Enhanced shadows */
+.shadow-3xl {
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+}
+
+.shadow-primary {
+  box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+}
+
+.shadow-primary-lg {
+  box-shadow: 0 20px 40px rgba(220, 38, 38, 0.4);
+}
+
+/* Enhanced transitions */
+.transition-enhanced {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced focus states */
+.focus-enhanced:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.3);
+}
+
+/* Enhanced loading states */
+.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: shimmer 1.5s infinite;
+} 
